@@ -20,6 +20,9 @@ const NavbarComponent = () => {
           <Nav className="me-auto">
             <Nav.Link href="#home">{t('nav.home')}</Nav.Link>
             <Nav.Link href="#about">{t('nav.about')}</Nav.Link>
+            <Nav.Link href="#lessons">{t('nav.lessons')}</Nav.Link>
+            <Nav.Link href="#repertoire">{t('nav.repertoire')}</Nav.Link>
+            <Nav.Link href="#performances">{t('nav.performances')}</Nav.Link>
             <Nav.Link href="#contact">{t('nav.contact')}</Nav.Link>
           </Nav>
           <NavDropdown 

@@ -3,8 +3,12 @@ $gold: #D4AF37;
 $deep-gold: #B4943E;
 $cream: #FFF8E7;
 $black: #1A1A1A;
-$red: #8B0000;
+$red: #680404;
 $white: #FFFFFF;
+
+// Typography
+$font-primary: 'Cormorant Garamond', serif;
+$font-secondary: 'Montserrat', sans-serif;
 
 // Override Bootstrap variables
 $primary: $gold;
@@ -15,41 +19,90 @@ $secondary: $black;
 
 // Global styles
 body {
-  font-family: 'Playfair Display', serif;
+  font-family: $font-secondary;
   color: $black;
   background-color: $white;
+  letter-spacing: 0.02em;
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $font-primary;
+  font-weight: 600;
+  letter-spacing: 0.03em;
 }
 
 // Navbar styles
 .navbar {
   & {
     background-color: rgba($black, 0.95) !important;
-    padding: 1rem 0;
-    transition: all 0.3s ease;
+    padding: 1.2rem 0;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  &.scrolled {
+    padding: 0.8rem 0;
+    background-color: rgba($black, 0.98) !important;
   }
   
   .navbar-brand {
     & {
       color: $gold !important;
-      font-size: 1.5rem;
+      font-family: $font-primary;
+      font-size: 1.8rem;
       font-weight: 700;
+      letter-spacing: 0.05em;
+      transition: transform 0.3s ease;
+    }
+    
+    &:hover {
+      transform: scale(1.05);
     }
     
     img {
       height: 40px;
+      transition: transform 0.3s ease;
+      
+      &:hover {
+        transform: scale(1.05);
+      }
     }
   }
   
   .nav-link {
     & {
       color: $white !important;
-      font-size: 1.1rem;
-      margin: 0 1rem;
-      transition: color 0.3s ease;
+      font-family: $font-secondary;
+      font-size: 1rem;
+      font-weight: 500;
+      margin: 0 1.2rem;
+      padding: 0.5rem 0;
+      position: relative;
+      transition: all 0.3s cubic-bezier(0.33, 1, 0.68, 1); // Easing like a slow music fade
+    }
+    
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 2px;
+      background-color: $gold;
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1); // Smooth like a melody
     }
     
     &:hover {
       color: $gold !important;
+      transform: translateY(-2px);
+      
+      &::before {
+        transform: scaleX(1);
+        transform-origin: left;
+      }
     }
   }
   
@@ -57,25 +110,97 @@ body {
     & {
       color: $gold;
       cursor: pointer;
+      position: relative;
+      padding: 0.5rem 1rem;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+      &:hover {
+        transform: translateY(-2px);
+      }
     }
   }
-
+  
   .dropdown-menu {
     & {
       background-color: rgba($black, 0.95);
       border: 1px solid $gold;
+      animation: fadeInScale 0.4s cubic-bezier(0.17, 0.67, 0.83, 0.67); // Like a crescendo
     }
     
     .dropdown-item {
       & {
         color: $white;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+        padding: 0.75rem 1.5rem;
+        
+        &::before {
+          content: '♪';
+          position: absolute;
+          left: 0.5rem;
+          opacity: 0;
+          transform: translateX(-10px);
+          transition: all 0.3s ease;
+        }
       }
       
       &:hover {
-        background-color: $gold;
+        background: linear-gradient(45deg, $deep-gold, $gold);
         color: $black;
+        padding-left: 2rem;
+        
+        &::before {
+          opacity: 1;
+          transform: translateX(0);
+        }
       }
     }
+  }
+}
+
+// Music-themed button animations
+.btn {
+  font-family: $font-secondary;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  padding: 0.8rem 1.8rem;
+  border-radius: 4px;
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); // Bouncy like a beat
+  position: relative;
+  overflow: hidden;
+  
+  &::before {
+    content: '♫';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    font-size: 1.5em;
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.5);
+    transition: all 0.4s cubic-bezier(0.17, 0.67, 0.83, 0.67);
+  }
+  
+  &:hover {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 4px 12px rgba($gold, 0.2);
+    
+    &::before {
+      opacity: 0.1;
+      transform: translate(-50%, -50%) scale(2);
+    }
+  }
+  
+  &:active {
+    transform: translateY(1px) scale(0.98);
+  }
+}
+
+.btn-primary {
+  background: linear-gradient(45deg, $deep-gold, $gold);
+  border: none;
+  
+  &:hover {
+    background: linear-gradient(45deg, darken($deep-gold, 5%), darken($gold, 5%));
   }
 }
 
@@ -153,7 +278,7 @@ body {
       & {
         background-color: transparent;
         border: 2px solid $gold;
-        color: $gold;
+        color: $black;
         padding: 0.8rem 2rem;
         font-size: 1.2rem;
         transition: all 0.3s ease;
@@ -167,69 +292,205 @@ body {
   }
 }
 
-// About section styles
+// About section
 .about-section {
-  & {
-    padding: 8rem 0;
-    background-color: $cream;
-  }
-  
-  img {
-    & {
-      width: 100%;
-      border-radius: 5px;
-      box-shadow: 0 10px 30px rgba($black, 0.1);
-      border: 3px solid $gold;
-    }
-  }
-  
-  .date {
-    & {
-      color: $red;
-      font-size: 1.1rem;
-      font-style: italic;
-    }
-  }
+  background-color: $white;
+  padding: 5rem 0;
 
   h2 {
-    & {
-      color: $black;
-      font-size: 3rem;
-      margin-bottom: 2rem;
-      position: relative;
-    }
-    
-    &:after {
-      content: '';
-      position: absolute;
-      bottom: -10px;
-      left: 0;
-      width: 60px;
-      height: 3px;
-      background-color: $gold;
-    }
+    color: $black;
+    margin-bottom: 2rem;
   }
 
   p {
-    & {
-      font-size: 1.2rem;
-      line-height: 1.8;
+    color: $black;
+    font-size: 1.1rem;
+    line-height: 1.8;
+  }
+}
+
+// Lessons Section
+.lessons-section {
+  background-color: $white;
+  padding: 5rem 0;
+  
+  .lesson-card {
+    background-color: $white;
+    border: 1px solid rgba($gold, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 15px rgba($black, 0.05);
+    
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba($black, 0.1);
+    }
+    
+    .lesson-icon {
+      font-size: 2.5rem;
+      color: $gold;
+      margin-bottom: 1.5rem;
+    }
+
+    .card-title {
       color: $black;
-      margin-bottom: 2rem;
+      font-family: $font-primary;
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .card-text {
+      color: rgba($black, 0.8);
+      line-height: 1.6;
     }
   }
 
   .btn-outline-primary {
-    & {
-      border: 2px solid $gold;
-      color: $black;
-      padding: 0.8rem 2rem;
-      font-size: 1.1rem;
-    }
-    
+    border-color: $gold;
+    color: $gold;
+    padding: 0.75rem 2rem;
+    font-family: $font-primary;
+    transition: all 0.3s ease;
+
     &:hover {
       background-color: $gold;
       color: $white;
+    }
+  }
+}
+
+// Repertoire Section
+.repertoire-section {
+  padding: 5rem 0;
+
+  .nav-pills {
+    position: sticky;
+    top: 100px;
+    
+    .nav-link {
+      color: $black;
+      border-radius: 0;
+      padding: 1rem 1.5rem;
+      margin-bottom: 0.5rem;
+      transition: all 0.3s ease;
+      font-family: $font-primary;
+      border-left: 3px solid transparent;
+      
+      &.active {
+        background-color: transparent;
+        color: $gold;
+        border-left: 3px solid $gold;
+      }
+      
+      &:hover:not(.active) {
+        background-color: rgba($gold, 0.05);
+        border-left: 3px solid rgba($gold, 0.3);
+      }
+    }
+  }
+
+  .repertoire-era {
+    h3 {
+      color: $black;
+      font-family: $font-primary;
+      border-bottom: 2px solid rgba($gold, 0.2);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+
+      .era-date {
+        color: $red;
+        font-size: 1rem;
+        margin-top: 0.5rem;
+        font-weight: normal;
+      }
+    }
+  }
+
+  .accordion {
+    --bs-accordion-btn-bg: transparent;
+    --bs-accordion-active-bg: transparent;
+    --bs-accordion-btn-focus-box-shadow: none;
+    
+    .accordion-item {
+      border: none;
+      background-color: transparent;
+      margin-bottom: 0.5rem;
+    }
+
+    .accordion-header {
+      .accordion-button {
+        font-family: $font-primary;
+        color: $black;
+        padding: 1.25rem;
+        background-color: rgba($white, 0.7);
+        border: 1px solid rgba($gold, 0.1);
+        
+        .composer-name {
+          font-weight: 600;
+          font-size: 1.1rem;
+        }
+        
+        &:not(.collapsed) {
+          color: $gold;
+          background-color: rgba($white, 0.9);
+          border-color: rgba($gold, 0.2);
+
+          .composer-name {
+            color: $gold;
+          }
+        }
+
+        &:focus {
+          box-shadow: none;
+        }
+      }
+    }
+
+    .accordion-body {
+      background-color: $white;
+      border: 1px solid rgba($gold, 0.1);
+      border-top: none;
+      padding: 1.5rem;
+    }
+  }
+
+  .repertoire-item {
+    padding: 0.75rem 0;
+    color: rgba($black, 0.9);
+    transition: all 0.3s ease;
+    
+    &:hover {
+      color: $gold;
+      transform: translateX(5px);
+    }
+  }
+}
+
+// Performances Section
+.performances-section {
+  background-color: $white;
+  
+  .performance-card {
+    border: none;
+    box-shadow: 0 4px 15px rgba($black, 0.1);
+    transition: transform 0.3s ease;
+    
+    &:hover {
+      transform: translateY(-5px);
+    }
+    
+    .performance-date {
+      color: $gold;
+      border-bottom: 2px solid rgba($gold, 0.2);
+      padding-bottom: 1rem;
+      
+      h3 {
+        font-size: 1.5rem;
+      }
+    }
+    
+    .card-footer {
+      background-color: transparent;
+      border-top: none;
     }
   }
 }
@@ -278,5 +539,29 @@ body {
         font-style: italic;
       }
     }
+  }
+}
+
+// Keyframe animations
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes pulseNote {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
   }
 }

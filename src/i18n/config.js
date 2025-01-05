@@ -7,6 +7,9 @@ const resources = {
       nav: {
         home: 'Home',
         about: 'About',
+        lessons: 'Lessons',
+        repertoire: 'Repertoire',
+        performances: 'Performances',
         contact: 'Contact',
       },
       header: {
@@ -31,6 +34,9 @@ const resources = {
       nav: {
         home: 'Home',
         about: 'Chi Sono',
+        lessons: 'Lezioni',
+        repertoire: 'Repertorio',
+        performances: 'Esibizioni',
         contact: 'Contatti',
       },
       header: {
