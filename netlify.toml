@@ -1,19 +1,11 @@
 [build]
-  base = "/"
-  command = "CI= npm install && npm run build"
+  command = "npm run build"
   publish = "dist"
-  environment = { NODE_VERSION = "18.16.0" }
 
 [build.environment]
-  NPM_FLAGS = "--legacy-peer-deps"
+  NODE_VERSION = "18.16.0"
 
 [[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
-    X-XSS-Protection = "1; mode=block"
