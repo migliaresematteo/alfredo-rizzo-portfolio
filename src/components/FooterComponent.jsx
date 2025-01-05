@@ -1,6 +1,7 @@
 import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { library } from '@fortawesome/fontawesome-svg-core';
 import { 
   faGithub, 
   faLinkedin, 
@@ -8,6 +9,9 @@ import {
   faInstagram 
 } from '@fortawesome/free-brands-svg-icons';
 import { useTranslation } from 'react-i18next';
+
+// Add icons to library
+library.add(faGithub, faLinkedin, faTwitter, faInstagram);
 
 const FooterComponent = () => {
   const { t } = useTranslation();
@@ -34,7 +38,7 @@ const FooterComponent = () => {
             </div>
             <div className="copyright">
               <p>
-                © {currentYear} {t('footer.copyright')}
+                {currentYear} {t('footer.copyright')}
               </p>
               <p>
                 {t('footer.author')}

@@ -6,12 +6,12 @@ $black: #1A1A1A;
 $red: #8B0000;
 $white: #FFFFFF;
 
-// Import Bootstrap
-@import "bootstrap/scss/bootstrap";
-
 // Override Bootstrap variables
 $primary: $gold;
 $secondary: $black;
+
+// Import Bootstrap
+@import "bootstrap/scss/bootstrap";
 
 // Global styles
 body {
@@ -22,14 +22,18 @@ body {
 
 // Navbar styles
 .navbar {
-  background-color: rgba($black, 0.95) !important;
-  padding: 1rem 0;
-  transition: all 0.3s ease;
+  & {
+    background-color: rgba($black, 0.95) !important;
+    padding: 1rem 0;
+    transition: all 0.3s ease;
+  }
   
   .navbar-brand {
-    color: $gold !important;
-    font-size: 1.5rem;
-    font-weight: 700;
+    & {
+      color: $gold !important;
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
     
     img {
       height: 40px;
@@ -37,10 +41,12 @@ body {
   }
   
   .nav-link {
-    color: $white !important;
-    font-size: 1.1rem;
-    margin: 0 1rem;
-    transition: color 0.3s ease;
+    & {
+      color: $white !important;
+      font-size: 1.1rem;
+      margin: 0 1rem;
+      transition: color 0.3s ease;
+    }
     
     &:hover {
       color: $gold !important;
@@ -48,16 +54,22 @@ body {
   }
   
   .language-selector {
-    color: $gold;
-    cursor: pointer;
+    & {
+      color: $gold;
+      cursor: pointer;
+    }
   }
 
   .dropdown-menu {
-    background-color: rgba($black, 0.95);
-    border: 1px solid $gold;
+    & {
+      background-color: rgba($black, 0.95);
+      border: 1px solid $gold;
+    }
     
     .dropdown-item {
-      color: $white;
+      & {
+        color: $white;
+      }
       
       &:hover {
         background-color: $gold;
@@ -69,67 +81,83 @@ body {
 
 // Header styles
 .header-section {
-  position: relative;
-  height: 100vh;
-  overflow: hidden;
-  background-color: $black;
+  & {
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+    background-color: $black;
+  }
   
   .header-image {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    opacity: 0.7;
+    & {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.7;
+    }
   }
   
   .overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(45deg, rgba($black, 0.8), rgba($black, 0.6));
+    & {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(45deg, rgba($black, 0.8), rgba($black, 0.6));
+    }
   }
   
   .header-content {
-    position: relative;
-    z-index: 1;
-    color: $white;
-    text-align: center;
-    padding: 2rem;
+    & {
+      position: relative;
+      z-index: 1;
+      color: $white;
+      text-align: center;
+      padding: 2rem;
+    }
     
     h1 {
-      font-size: 4.5rem;
-      font-weight: 700;
-      color: $gold;
-      margin-bottom: 1rem;
-      text-shadow: 2px 2px 4px rgba($black, 0.5);
+      & {
+        font-size: 4.5rem;
+        font-weight: 700;
+        color: $gold;
+        margin-bottom: 1rem;
+        text-shadow: 2px 2px 4px rgba($black, 0.5);
+      }
     }
 
     h2 {
-      font-size: 2.5rem;
-      color: $cream;
-      margin-bottom: 2rem;
+      & {
+        font-size: 2.5rem;
+        color: $cream;
+        margin-bottom: 2rem;
+      }
     }
     
     p {
-      font-size: 1.2rem;
-      color: $white;
-      margin-bottom: 2rem;
-      max-width: 800px;
-      margin-left: auto;
-      margin-right: auto;
+      & {
+        font-size: 1.2rem;
+        color: $white;
+        margin-bottom: 2rem;
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+      }
     }
 
     .btn-primary {
-      background-color: transparent;
-      border: 2px solid $gold;
-      color: $gold;
-      padding: 0.8rem 2rem;
-      font-size: 1.2rem;
-      transition: all 0.3s ease;
+      & {
+        background-color: transparent;
+        border: 2px solid $gold;
+        color: $gold;
+        padding: 0.8rem 2rem;
+        font-size: 1.2rem;
+        transition: all 0.3s ease;
+      }
       
       &:hover {
         background-color: $gold;
@@ -141,27 +169,35 @@ body {
 
 // About section styles
 .about-section {
-  padding: 8rem 0;
-  background-color: $cream;
+  & {
+    padding: 8rem 0;
+    background-color: $cream;
+  }
   
   img {
-    width: 100%;
-    border-radius: 5px;
-    box-shadow: 0 10px 30px rgba($black, 0.1);
-    border: 3px solid $gold;
+    & {
+      width: 100%;
+      border-radius: 5px;
+      box-shadow: 0 10px 30px rgba($black, 0.1);
+      border: 3px solid $gold;
+    }
   }
   
   .date {
-    color: $red;
-    font-size: 1.1rem;
-    font-style: italic;
+    & {
+      color: $red;
+      font-size: 1.1rem;
+      font-style: italic;
+    }
   }
 
   h2 {
-    color: $black;
-    font-size: 3rem;
-    margin-bottom: 2rem;
-    position: relative;
+    & {
+      color: $black;
+      font-size: 3rem;
+      margin-bottom: 2rem;
+      position: relative;
+    }
     
     &:after {
       content: '';
@@ -175,17 +211,21 @@ body {
   }
 
   p {
-    font-size: 1.2rem;
-    line-height: 1.8;
-    color: $black;
-    margin-bottom: 2rem;
+    & {
+      font-size: 1.2rem;
+      line-height: 1.8;
+      color: $black;
+      margin-bottom: 2rem;
+    }
   }
 
   .btn-outline-primary {
-    border: 2px solid $gold;
-    color: $black;
-    padding: 0.8rem 2rem;
-    font-size: 1.1rem;
+    & {
+      border: 2px solid $gold;
+      color: $black;
+      padding: 0.8rem 2rem;
+      font-size: 1.1rem;
+    }
     
     &:hover {
       background-color: $gold;
@@ -196,18 +236,24 @@ body {
 
 // Footer styles
 .footer {
-  background-color: $black;
-  padding: 4rem 0;
-  color: $white;
+  & {
+    background-color: $black;
+    padding: 4rem 0;
+    color: $white;
+  }
   
   .social-links {
-    margin-bottom: 2rem;
+    & {
+      margin-bottom: 2rem;
+    }
     
     a {
-      color: $gold;
-      margin: 0 15px;
-      font-size: 1.8rem;
-      transition: all 0.3s ease;
+      & {
+        color: $gold;
+        margin: 0 15px;
+        font-size: 1.8rem;
+        transition: all 0.3s ease;
+      }
       
       &:hover {
         color: $white;
@@ -217,11 +263,15 @@ body {
   }
   
   .copyright {
-    color: $cream;
-    font-size: 1rem;
+    & {
+      color: $cream;
+      font-size: 1rem;
+    }
     
     p {
-      margin: 0.5rem 0;
+      & {
+        margin: 0.5rem 0;
+      }
       
       &:last-child {
         color: $gold;
